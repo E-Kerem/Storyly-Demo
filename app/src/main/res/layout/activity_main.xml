@@ -1,71 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:id="@+id/storyly_view_holder"
+    <com.appsamurai.storyly.StorylyView
+        android:id="@+id/storyly_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:storyGroupListPaddingBetweenItems="20dp"
+        app:storyGroupTextColor="@android:color/holo_red_dark" />
 
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </Space>
 
-        <com.appsamurai.storyly.StorylyView
-            android:id="@+id/storyly_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:storyGroupListPaddingBetweenItems="20dp"
-            app:storyGroupTextColor="@android:color/holo_red_dark"
-            app:storyGroupIconHeight="4dp"
-            app:storyGroupIconWidth="2dp"
-            app:storyGroupIconCornerRadius="0dp"/>
+    <com.appsamurai.storyly.StorylyView
+        android:id="@+id/storyly_view2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:storyGroupTextSize="20dp"
+        app:storyGroupTextMaxLines="2"
+        app:storyHeaderTextIsVisible="false"
+        app:storyHeaderCloseButtonIsVisible="false"/>
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-        </Space>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </Space>
 
-        <com.appsamurai.storyly.StorylyView
-            android:id="@+id/storyly_view2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:storyGroupTextSize="20dp"
-            app:storyGroupTextMaxLines="2"
-            app:storyHeaderTextIsVisible="false"
-            app:storyHeaderCloseButtonIsVisible="false"/>
+    <com.appsamurai.storyly.StorylyView
+        android:id="@+id/storyly_view3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:storyGroupIconBackgroundColor="@android:color/darker_gray"
+        app:storyGroupPinIconColor="@android:color/holo_blue_light"
+        app:storyGroupSize="custom"
+        app:storyGroupIconHeight="150dp"
+        app:storyGroupIconWidth="150dp"
+        app:storyGroupIconCornerRadius="25dp"
+        app:storyItemTextColor="@android:color/holo_green_dark" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-        </Space>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </Space>
 
-        <com.appsamurai.storyly.StorylyView
-            android:id="@+id/storyly_view3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:storyGroupIconBackgroundColor="@android:color/darker_gray"
-            app:storyGroupPinIconColor="@android:color/holo_blue_light"
-            app:storyGroupIconHeight="100dp"
-            app:storyGroupIconWidth="200dp"
-            app:storyGroupIconCornerRadius="400dp"
-            app:storyItemTextColor="@android:color/holo_green_dark" />
+    <com.appsamurai.storyly.StorylyView
+        android:id="@+id/storyly_view4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-        <Space
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
-        </Space>
-
-        <com.appsamurai.storyly.StorylyView
-            android:id="@+id/storyly_view4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
