@@ -16,6 +16,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.storylyView.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
-
+        binding.storylyView2.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+        binding.storylyView3.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
+        binding.storylyView4.storylyInit = StorylyInit(STORYLY_INSTANCE_TOKEN)
     }
 }
