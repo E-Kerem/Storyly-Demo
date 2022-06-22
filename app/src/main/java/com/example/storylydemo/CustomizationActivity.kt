@@ -1,13 +1,14 @@
 package com.example.storylydemo
 
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.appsamurai.storyly.StoryGroupSize
 import com.appsamurai.storyly.StorylyInit
-import com.appsamurai.storyly.StorylyListener
 import com.appsamurai.storyly.StorylyView
 import com.appsamurai.storyly.styling.StoryGroupIconStyling
+import com.appsamurai.storyly.styling.StoryGroupTextStyling
 import com.example.storylydemo.databinding.ActivityCustomizationBinding
 
 class CustomizationActivity : AppCompatActivity() {
@@ -33,6 +34,9 @@ class CustomizationActivity : AppCompatActivity() {
         storylyView.setStoryGroupSize(StoryGroupSize.Custom)
         storylyView.setStoryGroupIconStyling(StoryGroupIconStyling(350f,350f,25f))
         storylyView.setStoryGroupPinIconColor(Color.RED)
+        val colors : Array<Int> = arrayOf(Color.BLUE, Color.RED, Color.GREEN)
+        storylyView.setStoryGroupIconBorderColorSeen(colors)
+        val textSize = Pair(50, 50)
+        storylyView.setStoryGroupTextStyling(StoryGroupTextStyling(true, Typeface.DEFAULT,textSize, 10,10,2,Color.GREEN))
     }
-
 }
