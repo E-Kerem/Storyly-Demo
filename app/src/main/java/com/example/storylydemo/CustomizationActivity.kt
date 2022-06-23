@@ -36,7 +36,12 @@ class CustomizationActivity : AppCompatActivity() {
         storylyView.setStoryGroupPinIconColor(Color.RED)
         val colors : Array<Int> = arrayOf(Color.BLUE, Color.RED, Color.GREEN)
         storylyView.setStoryGroupIconBorderColorSeen(colors)
-        val textSize = Pair(50, 50)
-        storylyView.setStoryGroupTextStyling(StoryGroupTextStyling(true, Typeface.DEFAULT,textSize, 10,10,2,Color.GREEN))
+        val textSize = Pair(100, 100)
+        storylyView.setStoryGroupTextStyling(StoryGroupTextStyling(true, Typeface.DEFAULT,textSize, 100,100,5,Color.GREEN))
+        storylyView.setStoryGroupIconBorderColorNotSeen(colors)
+        storylyView.setStoryGroupIVodIconColor(Color.GRAY)
+        storylyView.setStoryGroupIconImageThematicLabel("dark")
+        val barColors : Array<Int> = arrayOf(Color.YELLOW, Color.GREEN)
+        storylyView.setStoryItemProgressBarColor(barColors)
     }
 }
