@@ -54,7 +54,11 @@
         app:storyGroupIconWidth="150dp"
         app:storyGroupIconCornerRadius="25dp"
         app:storyItemTextColor="@android:color/holo_green_dark"
-        app:storyHeaderCloseButtonIsVisible="false"/>
+        app:storyHeaderCloseButtonIsVisible="false"
+        app:storyItemIconBorderColor="@array/testColorArray"/>
+    <!--
+          app:storyItemIconBorderColor="@colorArray/colorsArray"
+    -->
 
     <Space
         android:layout_width="0dp"

@@ -2,6 +2,7 @@ package com.example.storylydemo
 
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.appsamurai.storyly.StoryGroupSize
@@ -9,6 +10,7 @@ import com.appsamurai.storyly.StorylyInit
 import com.appsamurai.storyly.StorylyView
 import com.appsamurai.storyly.styling.StoryGroupIconStyling
 import com.appsamurai.storyly.styling.StoryGroupTextStyling
+import com.appsamurai.storyly.styling.StoryHeaderStyling
 import com.example.storylydemo.databinding.ActivityCustomizationBinding
 
 class CustomizationActivity : AppCompatActivity() {
@@ -43,5 +45,9 @@ class CustomizationActivity : AppCompatActivity() {
         storylyView.setStoryGroupIconImageThematicLabel("dark")
         val barColors : Array<Int> = arrayOf(Color.YELLOW, Color.GREEN)
         storylyView.setStoryItemProgressBarColor(barColors)
+        storylyView.setStoryItemIconBorderColor(colors)
+        storylyView.setStoryHeaderStyling(StoryHeaderStyling(true,true,
+            false,null,null))
+        //storylyView.setStoryInteractiveTextTypeface(Typeface.DEFAULT_BOLD)
     }
 }

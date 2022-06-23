@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="testColorArray">
+        <item>#FFDBDBDB</item>
+        <item>#FFDBDBDB</item>
+    </string-array>
+</resources>
