@@ -8,4 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#FF0000</color>
+
+    <!--
+        <resources>
+        <color-array name="colorsArray">
+            <item>#FFDBDBDB</item>
+            <item>#FFDBDBDB</item>
+        </color-array>
+    </resources>
+    -->
+
 </resources>

@@ -12,7 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:storyGroupListPaddingBetweenItems="20dp"
-        app:storyGroupTextColor="@android:color/holo_red_dark" />
+        app:storyGroupTextColor="@android:color/holo_red_dark"
+        app:storyGroupSize="custom"
+        app:storyGroupTextMaxLines="1"
+        app:storyGroupTextSize="50dp"
+        app:storyGroupPinIconColor="@android:color/holo_purple"
+        app:storyGroupIconImageThematicLabel="dark"
+        app:storyItemTextColor="@android:color/holo_purple"
+        app:storyHeaderTextIsVisible="false"/>
 
     <Space
         android:layout_width="0dp"
@@ -27,7 +34,8 @@
         app:storyGroupTextSize="20dp"
         app:storyGroupTextMaxLines="2"
         app:storyHeaderTextIsVisible="false"
-        app:storyHeaderCloseButtonIsVisible="false"/>
+        app:storyHeaderCloseButtonIsVisible="false"
+        app:storyGroupIconBackgroundColor="@android:color/darker_gray"/>
 
     <Space
         android:layout_width="0dp"
@@ -45,7 +53,8 @@
         app:storyGroupIconHeight="150dp"
         app:storyGroupIconWidth="150dp"
         app:storyGroupIconCornerRadius="25dp"
-        app:storyItemTextColor="@android:color/holo_green_dark" />
+        app:storyItemTextColor="@android:color/holo_green_dark"
+        app:storyHeaderCloseButtonIsVisible="false"/>
 
     <Space
         android:layout_width="0dp"
