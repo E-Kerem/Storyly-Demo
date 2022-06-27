@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/holder_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <com.appsamurai.storyly.StorylyView
+            android:id="@+id/storyly_view_demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.appsamurai.storyly.StorylyView
+            android:id="@+id/storyly_view_holder_demo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="15dip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/reset_Story"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Reset"
+            android:layout_margin="5dp">
+        </Button>
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        app:layout_constrainedHeight="@id/holder_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
+        android:scrollbars="vertical" >
+        <LinearLayout
+            android:id="@+id/scrollable_holder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_marginTop="15dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:autofillHints="Text Color"
+                    android:id="@+id/textColorPicker_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/colors"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:autofillHints="Text Color"
+                    android:id="@+id/textFontPicker_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/fonts"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="5dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <CheckBox
+                    android:id="@+id/checkbox_textVisible"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="@string/isTextVisible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="5dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:autofillHints="Text Color"
+                    android:id="@+id/iconColorPicker_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/iconColors"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/border_color_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Icon Border State Color"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:paddingLeft="9dp"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:layout_gravity="center">
+
+                        <Spinner
+                            android:autofillHints="Text Color"
+                            android:id="@+id/borderColorPicker1_spinner"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/borderColor"
+                            android:layout_margin="5dp" />
+
+                        <Spinner
+                            android:autofillHints="Text Color"
+                            android:id="@+id/borderColorPicker2_spinner"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/borderColor"
+                            android:layout_margin="5dp"/>
+
+                        <Spinner
+                            android:autofillHints="Text Color"
+                            android:id="@+id/borderColorPicker3_spinner"
+                            android:layout_width="110dp"
+                            android:layout_margin="5dp"
+                            android:layout_height="wrap_content"
+                            android:entries="@array/borderColor"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_gravity="center">
+                        <Button
+                            android:id="@+id/border_color_apply"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Apply"
+                            android:layout_margin="5dp">
+                        </Button>
+                        <CheckBox
+                            android:id="@+id/checkbox_icon_border_visible"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/borderVisible" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:autofillHints="Text Color"
+                    android:id="@+id/pinColorPicker_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/pinColor"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginTop="15dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Spinner
+                    android:autofillHints="Text Color"
+                    android:id="@+id/ivodColorPicker_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/ivodColor"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

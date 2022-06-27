@@ -8,6 +8,19 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+        <Spinner
+            android:id="@+id/pin_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp" />
+
+        <Button
+            android:id="@+id/text_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Text Color" />
+
     </LinearLayout>
 
 

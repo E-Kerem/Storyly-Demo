@@ -1,3 +1,84 @@
 <resources>
     <string name="app_name">Storyly Demo</string>
+    <string name="isTextVisible">Story Group Text Visible</string>
+    <string name="borderVisible">Border Color Not Seen </string>
+    <array name="colors">
+        <item>Choose Text Color</item>
+        <item>BLACK</item>
+        <item>BLUE</item>
+        <item>CYAN</item>
+        <item>DARK GRAY</item>
+        <item>GRAY</item>
+        <item>GRENN</item>
+        <item>LIGHT GRAY</item>
+        <item>MAGENTA</item>
+        <item>RED</item>
+        <item>YELLOW</item>
+    </array>
+
+    <array name="iconColors">
+        <item>Choose Icon Background Color</item>
+        <item>BLACK</item>
+        <item>BLUE</item>
+        <item>CYAN</item>
+        <item>DARK GRAY</item>
+        <item>GRAY</item>
+        <item>GRENN</item>
+        <item>LIGHT GRAY</item>
+        <item>MAGENTA</item>
+        <item>RED</item>
+        <item>YELLOW</item>
+    </array>
+
+    <array name="borderColor">
+        <item>Choose Icon Border Color</item>
+        <item>BLACK</item>
+        <item>BLUE</item>
+        <item>CYAN</item>
+        <item>DARK GRAY</item>
+        <item>GRAY</item>
+        <item>GRENN</item>
+        <item>LIGHT GRAY</item>
+        <item>MAGENTA</item>
+        <item>RED</item>
+        <item>YELLOW</item>
+    </array>
+
+    <array name="pinColor">
+        <item>Choose Icon Border Color</item>
+        <item>BLACK</item>
+        <item>BLUE</item>
+        <item>CYAN</item>
+        <item>DARK GRAY</item>
+        <item>GRAY</item>
+        <item>GRENN</item>
+        <item>LIGHT GRAY</item>
+        <item>MAGENTA</item>
+        <item>RED</item>
+        <item>YELLOW</item>
+    </array>
+
+    <array name="ivodColor">
+        <item>Choose Ivod Icon Color</item>
+        <item>BLACK</item>
+        <item>BLUE</item>
+        <item>CYAN</item>
+        <item>DARK GRAY</item>
+        <item>GRAY</item>
+        <item>GRENN</item>
+        <item>LIGHT GRAY</item>
+        <item>MAGENTA</item>
+        <item>RED</item>
+        <item>YELLOW</item>
+    </array>
+
+    <array name="fonts">
+        <item>Choose Text Font</item>
+        <item>DEFAULT</item>
+        <item>DEFAULT BOLD</item>
+        <item>SERIF</item>
+        <item>SANS SERIF</item>
+        <item>MONOSPACE</item>
+    </array>
+
 </resources>
