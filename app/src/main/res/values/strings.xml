@@ -45,7 +45,7 @@
     </array>
 
     <array name="pinColor">
-        <item>Choose Icon Border Color</item>
+        <item>Choose Pin Color</item>
         <item>BLACK</item>
         <item>BLUE</item>
         <item>CYAN</item>
