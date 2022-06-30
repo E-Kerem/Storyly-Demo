@@ -58,17 +58,30 @@
             android:id="@+id/scrollable_holder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:contentDescription="">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dip">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Choose Text Color"
+                    android:textSize="17dp"
+                    android:textColor="@color/black">
+                </TextView>
 
                 <Spinner
                     android:id="@+id/textColorPicker_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
                     android:autofillHints="Text Color"
                     android:entries="@array/colors" />
             </RelativeLayout>
@@ -76,12 +89,23 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dip">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Choose Text Font"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"></TextView>
 
                 <Spinner
                     android:id="@+id/textFontPicker_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
+                    android:layout_marginTop="20dp"
                     android:autofillHints="Text Color"
                     android:entries="@array/fonts" />
             </RelativeLayout>
@@ -89,7 +113,32 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dip">
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dip">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Choose Icon Background Color"
+                    android:textColor="@color/black"
+                    android:textSize="17dp">
+                </TextView>
+
+                <Spinner
+                    android:id="@+id/iconColorPicker_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    android:layout_marginTop="20dp"
+                    android:autofillHints="Text Color"
+                    android:entries="@array/colors" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dip">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -100,7 +149,7 @@
                     android:layout_marginEnd="10dp"
                     android:text="@string/isTextVisible"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="17dp" />
 
                 <CheckBox
                     android:id="@+id/checkbox_textVisible"
@@ -114,22 +163,11 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="5dip">
-
-                <Spinner
-                    android:id="@+id/iconColorPicker_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:autofillHints="Text Color"
-                    android:entries="@array/iconColors" />
-            </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dip">
 
                 <LinearLayout
@@ -144,7 +182,7 @@
                         android:paddingLeft="9dp"
                         android:text="Icon Border State Color"
                         android:textColor="@color/black"
-                        android:textSize="16dp" />
+                        android:textSize="17dp" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -160,7 +198,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:autofillHints="Text Color"
-                            android:entries="@array/borderColor" />
+                            android:entries="@array/colors" />
 
                         <Spinner
                             android:id="@+id/borderColorPicker2_spinner"
@@ -168,7 +206,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:autofillHints="Text Color"
-                            android:entries="@array/borderColor" />
+                            android:entries="@array/colors" />
 
                         <Spinner
                             android:id="@+id/borderColorPicker3_spinner"
@@ -176,7 +214,7 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="5dp"
                             android:autofillHints="Text Color"
-                            android:entries="@array/borderColor" />
+                            android:entries="@array/colors" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -206,32 +244,55 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dip">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Choose Pin Color"
+                    android:textColor="@color/black"
+                    android:textSize="17dp">
+                </TextView>
 
                 <Spinner
                     android:id="@+id/pinColorPicker_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
+                    android:layout_marginTop="20dp"
                     android:autofillHints="Text Color"
-                    android:entries="@array/pinColor" />
+                    android:entries="@array/colors" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_marginBottom="10dp"
                 android:layout_marginTop="15dip">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Choose Ivon Icon Color"
+                    android:textColor="@color/black"
+                    android:textSize="17dp">
+                </TextView>
 
                 <Spinner
                     android:id="@+id/ivodColorPicker_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="500dp"
+                    android:layout_marginTop="20dp"
                     android:autofillHints="Text Color"
-                    android:entries="@array/ivodColor" />
+                    android:entries="@array/colors" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:paddingTop="15dp">
 
                 <LinearLayout
@@ -363,7 +424,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="apply">
+                            android:text="apply size">
                         </Button>
                     </LinearLayout>
                 </LinearLayout>
@@ -371,6 +432,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -424,7 +486,7 @@
                         android:id="@+id/pedding_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Peddings Apply"
+                        android:text="Apply Peddings"
                         android:layout_gravity="center">
                     </Button>
                 </LinearLayout>

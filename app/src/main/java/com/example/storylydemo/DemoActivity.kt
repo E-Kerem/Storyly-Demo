@@ -21,7 +21,7 @@ class DemoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDemoBinding
     lateinit var storylyView: StorylyView
 
-    private val spinnerColors = arrayOf(Color.BLACK,Color.BLACK, Color.BLUE, Color.CYAN,
+    private val spinnerColors = arrayOf(Color.BLACK,Color.BLACK,Color.BLACK, Color.BLUE, Color.CYAN,
         Color.DKGRAY, Color.GRAY, Color.GREEN, Color.LTGRAY, Color.MAGENTA, Color.RED, Color.YELLOW)
 
     var textColor: Int? = null
@@ -120,7 +120,7 @@ class DemoActivity : AppCompatActivity() {
 
     private fun textFont(font: Typeface?) {
         if (font == null) {
-            val textFontSpinnerOptions = arrayOf(Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT_BOLD,
+            val textFontSpinnerOptions = arrayOf(Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT_BOLD,
                 Typeface.SERIF, Typeface.SANS_SERIF, Typeface.MONOSPACE)
             binding.textFontPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -262,7 +262,7 @@ class DemoActivity : AppCompatActivity() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     val postion = (binding.pinColorPickerSpinner.selectedItemPosition)
                     val result = spinnerColors.get(postion)
-                    if( postion == 0) //do nothing
+                    if ( postion == 0 ) //do nothing
                     else {
                         pinColor = result
                         storylyView.setStoryGroupPinIconColor(result)
@@ -284,7 +284,7 @@ class DemoActivity : AppCompatActivity() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     var postion = (binding.ivodColorPickerSpinner.selectedItemPosition)
                     var result = spinnerColors.get(postion)
-                    if( postion == 0) //do nothing
+                    if (postion == 0)
                     else {
                         ivodColor = result
                         storylyView.setStoryGroupIVodIconColor(result)
@@ -368,6 +368,5 @@ class DemoActivity : AppCompatActivity() {
                 } else size)!!),
             ))
     }
-
-
+    
 }
