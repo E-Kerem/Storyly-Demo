@@ -14,6 +14,7 @@
         <item>MAGENTA</item>
         <item>RED</item>
         <item>YELLOW</item>
+        <item>CUSTOM</item>
     </array>
 
     <array name="fonts">

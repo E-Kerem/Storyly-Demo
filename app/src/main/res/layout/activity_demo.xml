@@ -63,75 +63,146 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dip">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="Choose Text Color"
-                    android:textSize="17dp"
-                    android:textColor="@color/black">
-                </TextView>
-
-                <Spinner
-                    android:id="@+id/textColorPicker_spinner"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:autofillHints="Text Color"
-                    android:entries="@array/colors" />
+                    android:layout_marginTop="15dip"
+                    android:layout_marginBottom="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Choose Text Color"
+                        android:textColor="@color/black"
+                        android:textSize="17dp"></TextView>
+
+                    <Spinner
+                        android:id="@+id/textColorPicker_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Text Color"
+                        android:entries="@array/colors" />
+
+                    <RelativeLayout
+                        android:id="@+id/custom_color_text_hidden"
+                        android:layout_width="wrap_content"
+                        android:layout_height="60dp"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/color_show_button"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_marginStart="10dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="60dp"
+                                android:layout_marginBottom="10dp">
+                            </Button>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginEnd="40dp"
+                                android:layout_marginBottom="10dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="#Hex"
+                                    android:textSize="15dp"></TextView>
+
+                                <EditText
+                                    android:id="@+id/custom_text_color"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"></EditText>
+                            </LinearLayout>
+
+                            <Button
+                                android:id="@+id/custom_text_color_apply"
+                                android:layout_width="90dp"
+                                android:layout_height="50dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:text="Apply"></Button>
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dip">
-
-                <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Choose Text Font"
-                    android:textColor="@color/black"
-                    android:textSize="17dp"></TextView>
+                    android:layout_marginTop="15dip"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Choose Text Font"
+                        android:textSize="17dp"
+                        android:textColor="@color/black">
+                    </TextView>
 
-                <Spinner
-                    android:id="@+id/textFontPicker_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="20dp"
-                    android:autofillHints="Text Color"
-                    android:entries="@array/fonts" />
+                    <Spinner
+                        android:id="@+id/textFontPicker_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Text Color"
+                        android:entries="@array/fonts" />
+                </LinearLayout>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dip">
-                <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Choose Icon Background Color"
-                    android:textColor="@color/black"
-                    android:textSize="17dp">
-                </TextView>
+                    android:layout_marginTop="15dip"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Choose Icon Background Color"
+                        android:textSize="17dp"
+                        android:textColor="@color/black">
+                    </TextView>
 
-                <Spinner
-                    android:id="@+id/iconColorPicker_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="20dp"
-                    android:autofillHints="Text Color"
-                    android:entries="@array/colors" />
+                    <Spinner
+                        android:id="@+id/iconColorPicker_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Text Color"
+                        android:entries="@array/colors" />
+                </LinearLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
@@ -162,7 +233,6 @@
                     android:inputType="numberDecimal" />
 
             </RelativeLayout>
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -229,8 +299,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Apply">
-                        </Button>
+                            android:text="Apply"></Button>
 
                         <CheckBox
                             android:id="@+id/checkbox_icon_border_visible"
@@ -243,50 +312,62 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dip">
-                <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Choose Pin Color"
-                    android:textColor="@color/black"
-                    android:textSize="17dp">
-                </TextView>
+                    android:layout_marginTop="15dip"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Choose Pin Color"
+                        android:textSize="17dp"
+                        android:textColor="@color/black">
+                    </TextView>
 
-                <Spinner
-                    android:id="@+id/pinColorPicker_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="20dp"
-                    android:autofillHints="Text Color"
-                    android:entries="@array/colors" />
+                    <Spinner
+                        android:id="@+id/pinColorPicker_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Text Color"
+                        android:entries="@array/colors" />
+                </LinearLayout>
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dip">
-                <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp"
+                    android:layout_height="50dp"
                     android:layout_marginBottom="10dp"
-                    android:text="Choose Ivon Icon Color"
-                    android:textColor="@color/black"
-                    android:textSize="17dp">
-                </TextView>
+                    android:layout_marginTop="15dip"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Choose Ivon Icon Color"
+                        android:textSize="17dp"
+                        android:textColor="@color/black">
+                    </TextView>
 
-                <Spinner
-                    android:id="@+id/ivodColorPicker_spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="500dp"
-                    android:layout_marginTop="20dp"
-                    android:autofillHints="Text Color"
-                    android:entries="@array/colors" />
+                    <Spinner
+                        android:id="@+id/ivodColorPicker_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints="Text Color"
+                        android:entries="@array/colors" />
+                </LinearLayout>
+
             </RelativeLayout>
 
             <RelativeLayout

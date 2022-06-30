@@ -2,6 +2,7 @@ package com.example.storylydemo
 
 import android.graphics.Color
 import android.graphics.Typeface
+import android.opengl.Visibility
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -21,7 +22,7 @@ class DemoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDemoBinding
     lateinit var storylyView: StorylyView
 
-    private val spinnerColors = arrayOf(Color.BLACK,Color.BLACK,Color.BLACK, Color.BLUE, Color.CYAN,
+    private val spinnerColors = arrayOf(Color.BLACK,Color.BLACK, Color.BLUE, Color.CYAN,
         Color.DKGRAY, Color.GRAY, Color.GREEN, Color.LTGRAY, Color.MAGENTA, Color.RED, Color.YELLOW)
 
     var textColor: Int? = null
@@ -87,6 +88,7 @@ class DemoActivity : AppCompatActivity() {
         ivodColor(ivodColor)
         groupSize()
         groupListStyle(peddingFlag)
+
         reset()
     }
 
@@ -105,11 +107,23 @@ class DemoActivity : AppCompatActivity() {
                 }
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     var postion = (binding.textColorPickerSpinner.selectedItemPosition)
-                    val result = spinnerColors.get(postion)
                     if( postion == 0) //do nothing
                     else {
-                        textColor = result
-                        groupTextStyle(color = textColor)
+                        if (postion == 11) {
+                            binding.customColorTextHidden.visibility = View.VISIBLE
+                            binding.colorShowButton.setBackgroundColor(Color.LTGRAY)
+                            binding.customTextColorApply.setOnClickListener {
+                                val result = "#"+binding.customTextColor.text.toString()
+                                textColor = Color.parseColor(result)
+                                groupTextStyle(color = textColor)
+                                binding.colorShowButton.setBackgroundColor(textColor!!)
+                            }
+                        } else {
+                            binding.customColorTextHidden.visibility = View.GONE
+                            val result = spinnerColors.get(postion)
+                            textColor = result
+                            groupTextStyle(color = textColor)
+                        }
                     }
                 }
             }
@@ -117,6 +131,7 @@ class DemoActivity : AppCompatActivity() {
             groupTextStyle(color = textColor)
         }
     }
+
 
     private fun textFont(font: Typeface?) {
         if (font == null) {
