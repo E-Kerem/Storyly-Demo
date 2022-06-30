@@ -103,7 +103,7 @@ class DemoActivity : AppCompatActivity() {
         if (color == null) {
             binding.textColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-                    //Do nothing
+                    binding.customColorTextHidden.visibility = View.GONE
                 }
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     var postion = (binding.textColorPickerSpinner.selectedItemPosition)
