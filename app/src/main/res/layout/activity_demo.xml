@@ -372,7 +372,8 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_margin="5dp"
-                            android:text="Apply"></Button>
+                            android:text="Apply">
+                        </Button>
 
                         <CheckBox
                             android:id="@+id/checkbox_icon_border_visible"
