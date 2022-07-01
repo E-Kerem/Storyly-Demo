@@ -108,6 +108,7 @@ class DemoActivity : AppCompatActivity() {
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     var postion = (binding.textColorPickerSpinner.selectedItemPosition)
                     if( postion == 0) //do nothing
+                        binding.customColorTextHidden.visibility = View.GONE
                     else {
                         if (postion == 11) {
                             binding.customColorTextHidden.visibility = View.VISIBLE
@@ -183,11 +184,22 @@ class DemoActivity : AppCompatActivity() {
                 }
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     val postion = (binding.iconColorPickerSpinner.selectedItemPosition)
-                    val result = spinnerColors.get(postion)
-                    if( postion == 0) //do nothing
+                    if( postion == 0) binding.customColorIconBackgroundHidden.visibility = View.GONE
                     else {
-                        iconColor = result
-                        storylyView.setStoryGroupIconBackgroundColor(result)
+                        if (postion == 11) {
+                            binding.customColorIconBackgroundHidden.visibility = View.VISIBLE
+                            binding.iconBackgroundColorShowButton.setBackgroundColor(Color.LTGRAY)
+                            binding.iconBackgorundCustomTextColorApply.setOnClickListener {
+                                val result = "#"+binding.iconBackgroundCustomTextColor.text.toString()
+                                storylyView.setStoryGroupIconBackgroundColor(Color.parseColor(result))
+                                binding.iconBackgroundColorShowButton.setBackgroundColor(Color.parseColor(result))
+                            }
+                        } else {
+                            binding.customColorIconBackgroundHidden.visibility = View.GONE
+                            val result = spinnerColors.get(postion)
+                            iconColor = result
+                            storylyView.setStoryGroupIconBackgroundColor(result)
+                        }
                     }
                 }
             }
@@ -276,18 +288,31 @@ class DemoActivity : AppCompatActivity() {
                 }
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     val postion = (binding.pinColorPickerSpinner.selectedItemPosition)
-                    val result = spinnerColors.get(postion)
-                    if ( postion == 0 ) //do nothing
+                    if ( postion == 0 ) binding.customColorPinHidden.visibility = View.GONE
                     else {
-                        pinColor = result
-                        storylyView.setStoryGroupPinIconColor(result)
+                        if ( postion == 11 ) {
+                            binding.customColorPinHidden.visibility = View.VISIBLE
+                            binding.pinColorShowButton.setBackgroundColor(Color.LTGRAY)
+                            binding.pinCustomTextColorApply.setOnClickListener {
+                                val result = "#" + binding.pinCustomTextColor.text.toString()
+                                val result2 = Color.parseColor(result)
+                                pinColor = result2
+                                storylyView.setStoryGroupPinIconColor(result2)
+                                binding.pinColorShowButton.setBackgroundColor(result2)
+                            }
+                        } else {
+                            binding.customColorPinHidden.visibility = View.GONE
+                            val result = spinnerColors.get(postion)
+                            pinColor = result
+                            storylyView.setStoryGroupPinIconColor(result)
+                            }
+                        }
                     }
                 }
+            } else {
+                storylyView.setStoryGroupPinIconColor(pinColor!!)
             }
-        } else {
-            storylyView.setStoryGroupPinIconColor(color)
         }
-    }
 
     private fun ivodColor(color: Int?) {
         if (color == null) {
@@ -298,11 +323,24 @@ class DemoActivity : AppCompatActivity() {
                 }
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                     var postion = (binding.ivodColorPickerSpinner.selectedItemPosition)
-                    var result = spinnerColors.get(postion)
-                    if (postion == 0)
+
+                    if (postion == 0) binding.customColorIvodHidden.visibility = View.GONE
                     else {
-                        ivodColor = result
-                        storylyView.setStoryGroupIVodIconColor(result)
+                        if (postion == 11) {
+                            binding.customColorIvodHidden.visibility = View.VISIBLE
+                            binding.ivodColorShowButton.setBackgroundColor(Color.LTGRAY)
+                            binding.ivodCustomTextColorApply.setOnClickListener {
+                                val result = "#" + binding.ivodCustomTextColor.text.toString()
+                                ivodColor = Color.parseColor(result)
+                                storylyView.setStoryGroupIVodIconColor(ivodColor!!)
+                                binding.ivodColorShowButton.setBackgroundColor(ivodColor!!)
+                            }
+                        } else {
+                            binding.customColorIvodHidden.visibility = View.GONE
+                            var result = spinnerColors.get(postion)
+                            ivodColor = result
+                            storylyView.setStoryGroupIVodIconColor(result)
+                        }
                     }
                 }
             }

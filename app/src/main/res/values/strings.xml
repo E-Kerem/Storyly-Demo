@@ -2,6 +2,7 @@
     <string name="app_name">Storyly Demo</string>
     <string name="isTextVisible">Story Group Text Visible</string>
     <string name="borderVisible">Border Color Not Seen </string>
+
     <array name="colors">
         <item>Choose</item>
         <item>BLACK</item>
@@ -15,6 +16,30 @@
         <item>RED</item>
         <item>YELLOW</item>
         <item>CUSTOM</item>
+    </array>
+
+    <array name="borderNums">
+        <item>Choose</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+    </array>
+
+    <array name="borderColors">
+        <item>Choose</item>
+        <item>BLACK</item>
+        <item>BLUE</item>
+        <item>CYAN</item>
+        <item>DARK GRAY</item>
+        <item>GRAY</item>
+        <item>GRENN</item>
+        <item>LIGHT GRAY</item>
+        <item>MAGENTA</item>
+        <item>RED</item>
+        <item>YELLOW</item>
     </array>
 
     <array name="fonts">
