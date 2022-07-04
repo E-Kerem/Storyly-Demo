@@ -2,13 +2,11 @@ package com.example.storylydemo
 
 import android.graphics.Color
 import android.graphics.Typeface
-import android.opengl.Visibility
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.TypedValue
 import android.view.View
 import android.widget.AdapterView
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import com.appsamurai.storyly.StoryGroupSize
 import com.appsamurai.storyly.StorylyInit
@@ -33,14 +31,19 @@ class DemoActivity : AppCompatActivity() {
     var ivodColor: Int? = null
     var groupSize: StoryGroupSize? = StoryGroupSize.Large
     var peddingFlag: Boolean? = null
+    lateinit var button: RadioButton
 
+    lateinit var iconBorderSeenColors2: Array<Int>
+    lateinit var iconBorderNotSeenColors2: Array<Int>
+
+    /*
     val iconBorderSeenColors : Array<Int> = arrayOf(Color.WHITE, Color.WHITE, Color.WHITE)
     val iconBorderNotSeenColors : Array<Int> = arrayOf(Color.WHITE, Color.WHITE, Color.WHITE)
-
     var iconBorderSeenColorFlag: Boolean? = null
     var iconBorderNotSeenColorFlag: Boolean? = null
     var iconColorFlag: Boolean? = null
     var iconColor: Int? = null
+     */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -82,14 +85,16 @@ class DemoActivity : AppCompatActivity() {
         textSpinner(textColor)
         textFont(textFont)
         textVisibility(textVisible)
-        iconAndBorderColor(iconColorFlag,iconColor,iconBorderSeenColorFlag,iconBorderSeenColors,
-            iconBorderNotSeenColorFlag,iconBorderNotSeenColors)
         pincolor(pinColor)
         ivodColor(ivodColor)
-        groupSize()
         groupListStyle(peddingFlag)
-
+        newBorder() //TODO MEMORIZE
+        groupSize()
         reset()
+        /*
+        iconAndBorderColor(iconColorFlag,iconColor,iconBorderSeenColorFlag,iconBorderSeenColors,
+               iconBorderNotSeenColorFlag,iconBorderNotSeenColors)
+        */
     }
 
     private fun reset() {
@@ -133,7 +138,6 @@ class DemoActivity : AppCompatActivity() {
         }
     }
 
-
     private fun textFont(font: Typeface?) {
         if (font == null) {
             val textFontSpinnerOptions = arrayOf(Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT_BOLD,
@@ -170,112 +174,74 @@ class DemoActivity : AppCompatActivity() {
         }
     }
 
-    private fun iconAndBorderColor(iconFlag: Boolean?,
-                                   colorIcon: Int? ,
-                                   seenFlag: Boolean? ,
-                                   seenColors: Array<Int>?,
-                                   notSeenFlag: Boolean?,
-                                   notSeenColors: Array<Int>?) {
-        // Tools modifications - Icon Color
-        if (iconFlag == null) {
-            binding.iconColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+    private fun newBorder() {
+        var numberOfBorders: Int = 2
+        binding.spinnerNumberOfBorders.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                numberOfBorders = (binding.spinnerNumberOfBorders.selectedItemPosition)
+                if ( numberOfBorders != 0 ) {
+                    createRadioButtons(numberOfBorders)
+                    binding.newBorderColorApplyHolder.visibility = View.VISIBLE
+                    binding.newBorderColorApplyHolder2.visibility = View.VISIBLE
+                    binding.totalApply.visibility = View.VISIBLE
+                    binding.checkboxNewBorderVisible.setOnCheckedChangeListener { compoundButton, isChecked ->
+                        if (isChecked) {
+                            iconBorderNotSeenColors2 = Array(numberOfBorders + 1) {0}
+                            selectedBorderColorSelect(iconBorderNotSeenColors2,true)
+                        } else {
+                            iconBorderSeenColors2 = Array(numberOfBorders + 1) {0}
+                            selectedBorderColorSelect(iconBorderSeenColors2,false)
+                        }
+                    }
+                } else {
+                    binding.newBorderColorApplyHolder.visibility = View.GONE
+                    binding.newBorderColorApplyHolder2.visibility = View.GONE
+                    binding.totalApply.visibility = View.GONE
+                }
+            }
+        }
+    }
+    private fun selectedBorderColorSelect(arr: Array<Int>, isChecked:Boolean) {
+        binding.borderRadioGroupHolder.setOnCheckedChangeListener { radioGroup, i ->
+            binding.selectedBorderColorSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
-                    //Do nothing
                 }
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    val postion = (binding.iconColorPickerSpinner.selectedItemPosition)
-                    if( postion == 0) binding.customColorIconBackgroundHidden.visibility = View.GONE
-                    else {
+                    val postion = (binding.selectedBorderColorSpinner.selectedItemPosition)
+                    if ( postion == 0 ) {
+                        binding.customBorderColorHex.visibility = View.GONE
+                    } else {
                         if (postion == 11) {
-                            binding.customColorIconBackgroundHidden.visibility = View.VISIBLE
-                            binding.iconBackgroundColorShowButton.setBackgroundColor(Color.LTGRAY)
-                            binding.iconBackgorundCustomTextColorApply.setOnClickListener {
-                                val result = "#"+binding.iconBackgroundCustomTextColor.text.toString()
-                                storylyView.setStoryGroupIconBackgroundColor(Color.parseColor(result))
-                                binding.iconBackgroundColorShowButton.setBackgroundColor(Color.parseColor(result))
+                            binding.customBorderColorHex.visibility = View.VISIBLE
+                            binding.newBorderApply.setOnClickListener {
+                                val result = Color.parseColor("#"+binding.borderEditTextColor.text.toString())
+                                println("BURADA $result")
+                                arr[i-1] = result
                             }
                         } else {
-                            binding.customColorIconBackgroundHidden.visibility = View.GONE
-                            val result = spinnerColors.get(postion)
-                            iconColor = result
-                            storylyView.setStoryGroupIconBackgroundColor(result)
+                            binding.customBorderColorHex.visibility = View.GONE
+                            arr[i-1] = spinnerColors.get(postion)
                         }
                     }
                 }
-            }
-        } else {
-            if (colorIcon != null) {
-                storylyView.setStoryGroupIconBackgroundColor(colorIcon)
             }
         }
-        if (seenFlag == null) {
-            binding.borderColorPicker1Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    //Do nothing
-                }
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    var postion = ( binding.borderColorPicker1Spinner.selectedItemPosition)
-                    var result = spinnerColors.get(postion)
-                    if( postion == 0) //do nothing
-                    else {
-                        if (binding.checkboxIconBorderVisible.isChecked){
-                            iconBorderNotSeenColors.set(0,result)
-                        } else {
-                            iconBorderSeenColors.set(0,result)
-                        }
-                    }
-                }
-            }
-            binding.borderColorPicker2Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    //Do nothing
-                }
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    var postion = (binding.borderColorPicker2Spinner.selectedItemPosition)
-                    var result = spinnerColors.get(postion)
-                    if( postion == 0) //do nothing
-                    else {
-                        if (binding.checkboxIconBorderVisible.isChecked){
-                            iconBorderNotSeenColors.set(1,result)
-                        } else {
-                            iconBorderSeenColors.set(1,result)
-                        }
-                    }
-                }
-            }
-            binding.borderColorPicker3Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                    //Do nothing
-                }
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-                    var postion = (binding.borderColorPicker3Spinner.selectedItemPosition)
-                    var result = spinnerColors.get(postion)
-                    if( postion == 0) //do nothing
-                    else {
-                        if (binding.checkboxIconBorderVisible.isChecked) {
-                            iconBorderNotSeenColors.set(2,result)
-                        } else {
-                            iconBorderSeenColors.set(2,result)
-                        }
-                    }
-                }
-            }
-        } else {
-            storylyView.setStoryItemIconBorderColor(iconBorderSeenColors)
-            if ( notSeenFlag == true) {
-                storylyView.setStoryGroupIconBorderColorNotSeen(iconBorderNotSeenColors)
-            }
-        }
-
-        binding.borderColorApply.setOnClickListener{
-            if (binding.checkboxIconBorderVisible.isChecked){
-                iconBorderNotSeenColorFlag = true
+        binding.totalApply.setOnClickListener{
+            if (isChecked) {
                 initStory(groupSize)
-                storylyView.setStoryGroupIconBorderColorNotSeen(iconBorderNotSeenColors)
+                storylyView.setStoryGroupIconBorderColorNotSeen(arr)
             } else {
-                iconBorderSeenColorFlag = true
-                storylyView.setStoryItemIconBorderColor(iconBorderSeenColors)
+                storylyView.setStoryItemIconBorderColor(arr)
             }
+        }
+    }
+    private fun createRadioButtons(num: Int) {
+        for (i in 1..num+1) {
+            button = RadioButton(this)
+            button.setText("$i")
+            binding.borderRadioGroupHolder.addView(button)
         }
     }
 
@@ -421,5 +387,115 @@ class DemoActivity : AppCompatActivity() {
                 } else size)!!),
             ))
     }
-    
+
 }
+/*
+private fun iconAndBorderColor(iconFlag: Boolean?,
+                             colorIcon: Int? ,
+                             seenFlag: Boolean? ,
+                             seenColors: Array<Int>?,
+                             notSeenFlag: Boolean?,
+                             notSeenColors: Array<Int>?) {
+  // Tools modifications - Icon Color
+  if (iconFlag == null) {
+      binding.iconColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+          override fun onNothingSelected(p0: AdapterView<*>?) {
+              //Do nothing
+          }
+          override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+              val postion = (binding.iconColorPickerSpinner.selectedItemPosition)
+              if( postion == 0) binding.customColorIconBackgroundHidden.visibility = View.GONE
+              else {
+                  if (postion == 11) {
+                      binding.customColorIconBackgroundHidden.visibility = View.VISIBLE
+                      binding.iconBackgroundColorShowButton.setBackgroundColor(Color.LTGRAY)
+                      binding.iconBackgorundCustomTextColorApply.setOnClickListener {
+                          val result = "#"+binding.iconBackgroundCustomTextColor.text.toString()
+                          storylyView.setStoryGroupIconBackgroundColor(Color.parseColor(result))
+                          binding.iconBackgroundColorShowButton.setBackgroundColor(Color.parseColor(result))
+                      }
+                  } else {
+                      binding.customColorIconBackgroundHidden.visibility = View.GONE
+                      val result = spinnerColors.get(postion)
+                      iconColor = result
+                      storylyView.setStoryGroupIconBackgroundColor(result)
+                  }
+              }
+          }
+      }
+  } else {
+      if (colorIcon != null) {
+          storylyView.setStoryGroupIconBackgroundColor(colorIcon)
+      }
+  }
+  if (seenFlag == null) {
+      binding.borderColorPicker1Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+          override fun onNothingSelected(p0: AdapterView<*>?) {
+              //Do nothing
+          }
+          override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+              var postion = ( binding.borderColorPicker1Spinner.selectedItemPosition)
+              var result = spinnerColors.get(postion)
+              if( postion == 0) //do nothing
+              else {
+                  if (binding.checkboxIconBorderVisible.isChecked){
+                      iconBorderNotSeenColors.set(0,result)
+                  } else {
+                      iconBorderSeenColors.set(0,result)
+                  }
+              }
+          }
+      }
+      binding.borderColorPicker2Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+          override fun onNothingSelected(p0: AdapterView<*>?) {
+              //Do nothing
+          }
+          override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+              var postion = (binding.borderColorPicker2Spinner.selectedItemPosition)
+              var result = spinnerColors.get(postion)
+              if( postion == 0) //do nothing
+              else {
+                  if (binding.checkboxIconBorderVisible.isChecked){
+                      iconBorderNotSeenColors.set(1,result)
+                  } else {
+                      iconBorderSeenColors.set(1,result)
+                  }
+              }
+          }
+      }
+      binding.borderColorPicker3Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+          override fun onNothingSelected(p0: AdapterView<*>?) {
+              //Do nothing
+          }
+          override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+              var postion = (binding.borderColorPicker3Spinner.selectedItemPosition)
+              var result = spinnerColors.get(postion)
+              if( postion == 0) //do nothing
+              else {
+                  if (binding.checkboxIconBorderVisible.isChecked) {
+                      iconBorderNotSeenColors.set(2,result)
+                  } else {
+                      iconBorderSeenColors.set(2,result)
+                  }
+              }
+          }
+      }
+  } else {
+      storylyView.setStoryItemIconBorderColor(iconBorderSeenColors)
+      if ( notSeenFlag == true) {
+          storylyView.setStoryGroupIconBorderColorNotSeen(iconBorderNotSeenColors)
+      }
+  }
+
+  binding.borderColorApply.setOnClickListener{
+      if (binding.checkboxIconBorderVisible.isChecked){
+          iconBorderNotSeenColorFlag = true
+          initStory(groupSize)
+          storylyView.setStoryGroupIconBorderColorNotSeen(iconBorderNotSeenColors)
+      } else {
+          iconBorderSeenColorFlag = true
+          storylyView.setStoryItemIconBorderColor(iconBorderSeenColors)
+      }
+  }
+}
+*/
