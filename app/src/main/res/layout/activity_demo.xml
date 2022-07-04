@@ -385,7 +385,7 @@
                                     android:layout_width="71dp"
                                     android:layout_height="50dp"
                                     android:textSize="11dp"
-                                    android:text="Apply">
+                                    android:text="Update">
                                 </Button>
                             </LinearLayout>
 

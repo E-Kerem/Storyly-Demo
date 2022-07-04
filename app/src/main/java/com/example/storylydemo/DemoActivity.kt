@@ -233,11 +233,12 @@ class DemoActivity : AppCompatActivity() {
                 initStory(groupSize)
                 storylyView.setStoryGroupIconBorderColorNotSeen(arr)
             } else {
-                storylyView.setStoryItemIconBorderColor(arr)
+                storylyView.setStoryGroupIconBorderColorSeen(arr)
             }
         }
     }
     private fun createRadioButtons(num: Int) {
+        binding.borderRadioGroupHolder.removeAllViews()
         for (i in 1..num+1) {
             button = RadioButton(this)
             button.setText("$i")
