@@ -79,6 +79,10 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun setupCustomization() {
+        /**
+         * re-initializing listeners every time setupCustomization are called may be unnessacery
+         * different method can be used for adding listeners and can be called in onCreate just once
+         */
         textSpinner(textColor)
         textFont(textFont)
         textVisibility(textVisible)
@@ -100,7 +104,19 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun textSpinner(color: Int?) {
+        /**
+         * if-null checks are ok to use
+         * however can use alternative methods such as,
+         *    color?.also {
+         *         // if not null
+         *    } ?: run {
+         *         // if null
+         *    }
+         */
         if (color == null) {
+            /**
+             * re-initialized listener
+             */
             binding.textColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     binding.customColorTextHidden.visibility = View.GONE
@@ -117,6 +133,15 @@ class DemoActivity : AppCompatActivity() {
                                 val result = "#"+binding.customTextColor.text.toString()
                                 textColor = Color.parseColor(result)
                                 groupTextStyle(color = textColor)
+                                /**
+                                 * using force unwrap is unneccessary for the customization value
+                                 * even if it doesnt crash, should minise force unwrap and use:
+                                 *      textColor?.let { binding.colorShowButton.setBackgroundColor(it) }
+                                 *      textColor?.also { binding.colorShowButton.setBackgroundColor(it) }
+                                 * referances:
+                                 *  https://www.baeldung.com/kotlin/null-safety
+                                 *  https://kotlinlang.org/docs/null-safety.html?q=null%20safety&s=full
+                                 */
                                 binding.colorShowButton.setBackgroundColor(textColor!!)
                             }
                         } else {
@@ -136,6 +161,9 @@ class DemoActivity : AppCompatActivity() {
 
     private fun textFont(font: Typeface?) {
         if (font == null) {
+            /**
+             * re-initialized listener
+             */
             val textFontSpinnerOptions = arrayOf(Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT_BOLD,
                 Typeface.SERIF, Typeface.SANS_SERIF, Typeface.MONOSPACE)
             binding.textFontPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -178,6 +206,9 @@ class DemoActivity : AppCompatActivity() {
                                    notSeenColors: Array<Int>?) {
         // Tools modifications - Icon Color
         if (iconFlag == null) {
+            /**
+             * re-initialized listener
+             */
             binding.iconColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     //Do nothing
@@ -209,6 +240,12 @@ class DemoActivity : AppCompatActivity() {
             }
         }
         if (seenFlag == null) {
+            /**
+             * for three spinners borderColorPicker1Spinner, borderColorPicker2Spinner, borderColorPicker3Spinner
+             * onItemSelected is closely alike, can we merge three listeners into one and change as,
+             *          seenColors.set(index, result)
+             * index parameters changing for different spinner
+             */
             binding.borderColorPicker1Spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     //Do nothing
@@ -267,6 +304,9 @@ class DemoActivity : AppCompatActivity() {
             }
         }
 
+        /**
+         * re-initialized listener
+         */
         binding.borderColorApply.setOnClickListener{
             if (binding.checkboxIconBorderVisible.isChecked){
                 iconBorderNotSeenColorFlag = true
@@ -281,6 +321,9 @@ class DemoActivity : AppCompatActivity() {
 
     private fun pincolor(color: Int?) {
         if (color == null) {
+            /**
+             * re-initialized listener
+             */
             // Tools modifications - Pin Icon Color
             binding.pinColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -305,17 +348,23 @@ class DemoActivity : AppCompatActivity() {
                             val result = spinnerColors.get(postion)
                             pinColor = result
                             storylyView.setStoryGroupPinIconColor(result)
-                            }
                         }
                     }
                 }
-            } else {
-                storylyView.setStoryGroupPinIconColor(pinColor!!)
             }
+        } else {
+            /**
+             * force unwrap used
+             */
+            storylyView.setStoryGroupPinIconColor(pinColor!!)
         }
+    }
 
     private fun ivodColor(color: Int?) {
         if (color == null) {
+            /**
+             * re-initialized listener
+             */
             // Tools modifications - Ivod Icon Color
             binding.ivodColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -332,6 +381,9 @@ class DemoActivity : AppCompatActivity() {
                             binding.ivodCustomTextColorApply.setOnClickListener {
                                 val result = "#" + binding.ivodCustomTextColor.text.toString()
                                 ivodColor = Color.parseColor(result)
+                                /**
+                                 * force unwrap used
+                                 */
                                 storylyView.setStoryGroupIVodIconColor(ivodColor!!)
                                 binding.ivodColorShowButton.setBackgroundColor(ivodColor!!)
                             }
@@ -350,6 +402,9 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun groupSize() {
+        /**
+         * re-initialized listener
+         */
         binding.radioGroupStorySize.setOnCheckedChangeListener { radioGroup, i ->
             if ( i == R.id.group_size_large) {
                 binding.custimizationGroupSize.visibility = View.GONE
@@ -368,6 +423,9 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun groupCustomSizeStyle() {
+        /**
+         * re-initialized listener
+         */
         binding.sizeApply.setOnClickListener{
             val height: Float = binding.editTextStoryGroupInput1.text.toString().toFloat()
             val width: Float = binding.editTextStoryGroupInput2.text.toString().toFloat()
@@ -384,6 +442,9 @@ class DemoActivity : AppCompatActivity() {
 
     private fun groupListStyle(flag: Boolean?) {
         if (flag == null) {
+            /**
+             * re-initialized listener
+             */
             binding.peddingApply.setOnClickListener{
                 if (binding.edgePedding.text.toString().toFloat() != Float.MIN_VALUE && binding.itemPedding.text.toString().toFloat() != Float.MIN_VALUE   ) {
                     initStory(groupSize)
@@ -403,6 +464,10 @@ class DemoActivity : AppCompatActivity() {
                     if (textVisible == null) true
                     else
                         textVisible
+                    /**
+                     * force unwrap used
+                     * for setting the values can use ?: elvis operator to give default value if null returned
+                     */
                 } else visible)!!),
                 color = ((if (color == null) {
                     if (textColor == null) Color.BLACK
@@ -421,5 +486,5 @@ class DemoActivity : AppCompatActivity() {
                 } else size)!!),
             ))
     }
-    
+
 }
