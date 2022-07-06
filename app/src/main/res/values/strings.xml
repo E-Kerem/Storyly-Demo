@@ -31,19 +31,6 @@
         <item>10"</item>
     </array>
 
-    <array name="borderColors">
-        <item>Choose</item>
-        <item>BLACK</item>
-        <item>BLUE</item>
-        <item>CYAN</item>
-        <item>DARK GRAY</item>
-        <item>GRAY</item>
-        <item>GRENN</item>
-        <item>LIGHT GRAY</item>
-        <item>MAGENTA</item>
-        <item>RED</item>
-        <item>YELLOW</item>
-    </array>
 
     <array name="fonts">
         <item>Choose</item>

@@ -308,7 +308,7 @@
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:paddingLeft="9dp"
-                            android:text="Icon Border State Color"
+                            android:text="Icon Border Seen State Color"
                             android:textColor="@color/black"
                             android:textSize="17dp" />
 
@@ -329,8 +329,7 @@
                         android:id="@+id/new_border_color_apply_holder"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -354,37 +353,33 @@
                             android:orientation="horizontal"
                             android:visibility="gone">
 
-                            <CheckBox
-                                android:id="@+id/checkbox_new_border_visible"
-                                android:layout_width="130dp"
-                                android:layout_height="wrap_content"
-                                android:text="@string/borderVisible"
-                                android:checked="true"/>
-
                             <LinearLayout
                                 android:id="@+id/custom_border_color_hex"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginRight="40dp"
                                 android:visibility="gone">
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="#Hex"
                                     android:textSize="15dp"
-                                    android:layout_marginTop="5dp">
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginStart="9dp">
                                 </TextView>
 
                                 <EditText
                                     android:id="@+id/border_editText_color"
-                                    android:layout_width="50dp"
+                                    android:layout_width="70dp"
                                     android:layout_height="wrap_content">
                                 </EditText>
 
                                 <Button
                                     android:id="@+id/new_border_apply"
-                                    android:layout_width="71dp"
+                                    android:layout_width="85dp"
+                                    android:layout_marginTop="3dp"
                                     android:layout_height="50dp"
-                                    android:textSize="11dp"
+                                    android:textSize="12dp"
                                     android:text="Update">
                                 </Button>
                             </LinearLayout>
@@ -394,7 +389,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:entries="@array/colors"
-                                android:layout_marginTop="15dp">
+                                android:layout_marginTop="15dp"
+                                android:layout_marginStart="0dp">
                             </Spinner>
 
                         </LinearLayout>
@@ -412,16 +408,13 @@
                 </LinearLayout>
             </RelativeLayout>
 
-
             <RelativeLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="15dip"
-                android:visibility="gone">
-
+                android:layout_marginTop="20dp"
+                android:paddingBottom="20dp">
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
@@ -429,13 +422,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
-
                         <TextView
-                            android:id="@+id/border_color_text"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:paddingLeft="9dp"
-                            android:text="Icon Border State Color"
+                            android:text="Icon Border Not Seen State Color"
                             android:textColor="@color/black"
                             android:textSize="17dp" />
 
@@ -443,69 +434,96 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingStart="39dp"
-                            android:text="Number of color"
-                            android:visibility="gone"></TextView>
+                            android:text="Number of color">
+                        </TextView>
 
                         <Spinner
+                            android:id="@+id/spinner_numberOf_borders_not_Seen"
                             android:layout_width="50dp"
                             android:layout_height="wrap_content"
-                            android:paddingStart="50dp"
-                            android:visibility="gone" />
+                            android:entries="@array/borderNums"/>
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/new_border_color_apply_holder_not_Seen"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        android:orientation="horizontal">
-
-                        <Spinner
-                            android:id="@+id/borderColorPicker1_spinner"
-                            android:layout_width="110dp"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:autofillHints="Text Color"
-                            android:entries="@array/borderColors" />
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true">
 
-                        <Spinner
-                            android:id="@+id/borderColorPicker2_spinner"
-                            android:layout_width="110dp"
+                            <RadioGroup
+                                android:id="@+id/border_radio_group_holder_not_Seen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginStart="5dp">
+                            </RadioGroup>
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/new_border_color_apply_holder2_not_Seen"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:autofillHints="Text Color"
-                            android:entries="@array/borderColors" />
+                            android:layout_marginBottom="10dp"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
 
-                        <Spinner
-                            android:id="@+id/borderColorPicker3_spinner"
-                            android:layout_width="110dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:autofillHints="Text Color"
-                            android:entries="@array/borderColors" />
-                    </LinearLayout>
+                            <LinearLayout
+                                android:id="@+id/custom_border_color_hex_not_Seen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="40dp"
+                                android:visibility="gone">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="#Hex"
+                                    android:textSize="15dp"
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginStart="9dp">
+                                </TextView>
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:orientation="horizontal">
+                                <EditText
+                                    android:id="@+id/border_editText_color_not_Seen"
+                                    android:layout_width="70dp"
+                                    android:layout_height="wrap_content">
+                                </EditText>
 
+                                <Button
+                                    android:id="@+id/new_border_apply_not_Seen"
+                                    android:layout_width="85dp"
+                                    android:layout_marginTop="3dp"
+                                    android:layout_height="50dp"
+                                    android:textSize="12dp"
+                                    android:text="Update">
+                                </Button>
+                            </LinearLayout>
+
+                            <Spinner
+                                android:id="@+id/selected_border_color_spinner_not_Seen"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:entries="@array/colors"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginStart="0dp">
+                            </Spinner>
+
+                        </LinearLayout>
                         <Button
-                            android:id="@+id/border_color_apply"
-                            android:layout_width="120dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_margin="5dp"
-                            android:text="Apply"></Button>
-
-                        <CheckBox
-                            android:id="@+id/checkbox_icon_border_visible"
-                            android:layout_width="150dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/borderVisible" />
+                            android:id="@+id/total_apply_not_Seen"
+                            android:layout_width="71dp"
+                            android:layout_height="50dp"
+                            android:textSize="11dp"
+                            android:text="Apply"
+                            android:visibility="gone"
+                            android:layout_gravity="center">
+                        </Button>
                     </LinearLayout>
+
                 </LinearLayout>
             </RelativeLayout>
 
@@ -889,3 +907,101 @@
     </ScrollView>
 
 </LinearLayout>
+
+<!--
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="15dip"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/border_color_text"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="9dp"
+                            android:text="Icon Border State Color"
+                            android:textColor="@color/black"
+                            android:textSize="17dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="39dp"
+                            android:text="Number of color"
+                            android:visibility="gone"></TextView>
+
+                        <Spinner
+                            android:layout_width="50dp"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="50dp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/borderColorPicker1_spinner"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:autofillHints="Text Color"
+                            android:entries="@array/colors" />
+
+                        <Spinner
+                            android:id="@+id/borderColorPicker2_spinner"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:autofillHints="Text Color"
+                            android:entries="@array/colors" />
+
+                        <Spinner
+                            android:id="@+id/borderColorPicker3_spinner"
+                            android:layout_width="110dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:autofillHints="Text Color"
+                            android:entries="@array/colors" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/border_color_apply"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_margin="5dp"
+                            android:text="Apply"></Button>
+
+                        <CheckBox
+                            android:id="@+id/checkbox_icon_border_visible"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/borderVisible" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+-->
