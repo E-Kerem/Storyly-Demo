@@ -77,6 +77,7 @@ class DemoActivity : AppCompatActivity() {
                 }
                 else -> {
                     storylyView.setStoryGroupSize(StoryGroupSize.Custom)
+                    groupCustomSizeStyle()
                 }
             }
         }
@@ -97,6 +98,18 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun reset() {
+        textColor = null
+        textFont = null
+        textVisible = null
+        textSize = null
+        pinColor = null
+        iconColor = null
+        ivodColor = null
+        groupSize = StoryGroupSize.Large
+        peddingFlag = null
+        borderSeenFlag = null
+        borderNotSeenFlag = null
+        
         binding.resetStory.setOnClickListener{
             binding.holderView.removeView(storylyView)
             initStory()
@@ -104,7 +117,9 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun textSpinner(color: Int?) {
-        if (color == null) {
+        color?.also {
+            groupTextStyle(color = textColor)
+        }?: run {
             binding.textColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     binding.customColorTextHidden.visibility = View.GONE
@@ -132,13 +147,13 @@ class DemoActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else {
-            groupTextStyle(color = textColor)
         }
     }
 
     private fun textFont(font: Typeface?) {
-        if (font == null) {
+        font?.also {
+            groupTextStyle(font = textFont)
+        }?: run {
             val textFontSpinnerOptions = arrayOf(Typeface.DEFAULT,Typeface.DEFAULT,Typeface.DEFAULT_BOLD,
                 Typeface.SERIF, Typeface.SANS_SERIF, Typeface.MONOSPACE)
             binding.textFontPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -155,26 +170,26 @@ class DemoActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else {
-            groupTextStyle(font = textFont)
         }
     }
 
     private fun textVisibility(visibility: Boolean?) {
-        if (visibility == null) {
+        visibility?.also {
+            groupTextStyle(visible = textVisible)
+        }?: run {
             binding.checkboxTextVisible.setOnCheckedChangeListener{ buttonView, isChecked ->
                 textVisible = false
                 if(isChecked)
                     textVisible = true
                 groupTextStyle(visible = textVisible)
             }
-        } else {
-            groupTextStyle(visible = textVisible)
         }
     }
 
     private fun borderSeen(isInit: Boolean?) {
-        if (isInit == null) {
+        isInit?.also {
+            selectedBorderColorSelect(iconBorderSeenColors,isInit)
+        }?: run {
             var numberOfBorders: Int = 2
             binding.spinnerNumberOfBorders.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -186,6 +201,7 @@ class DemoActivity : AppCompatActivity() {
                         binding.newBorderColorApplyHolder.visibility = View.VISIBLE
                         binding.newBorderColorApplyHolder2.visibility = View.VISIBLE
                         binding.totalApply.visibility = View.VISIBLE
+                        borderSeenFlag = true
                     } else {
                         binding.newBorderColorApplyHolder.visibility = View.GONE
                         binding.newBorderColorApplyHolder2.visibility = View.GONE
@@ -193,10 +209,12 @@ class DemoActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else selectedBorderColorSelect(iconBorderSeenColors,isInit)
+        }
     }
     private fun borderNotSeen(isInit: Boolean?) {
-        if (isInit == null) {
+        isInit?.also {
+            selectedBorderColorNotSeenSelect(iconBorderNotSeenColors,isInit)
+        }?: run {
             var numberOfBordersNotSeen: Int = 2
             binding.spinnerNumberOfBordersNotSeen.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -208,6 +226,7 @@ class DemoActivity : AppCompatActivity() {
                         binding.newBorderColorApplyHolderNotSeen.visibility = View.VISIBLE
                         binding.newBorderColorApplyHolder2NotSeen.visibility = View.VISIBLE
                         binding.totalApplyNotSeen.visibility = View.VISIBLE
+                        borderNotSeenFlag = true
                     } else {
                         binding.newBorderColorApplyHolderNotSeen.visibility = View.GONE
                         binding.newBorderColorApplyHolder2NotSeen.visibility = View.GONE
@@ -215,11 +234,13 @@ class DemoActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else selectedBorderColorNotSeenSelect(iconBorderNotSeenColors,isInit)
+        }
     }
 
     private fun selectedBorderColorSelect(arr: Array<Int>, isInit:Boolean?) {
-        if (isInit == null) {
+        isInit?.also {
+            storylyView.setStoryGroupIconBorderColorSeen(arr)
+        }?: run {
             binding.borderRadioGroupHolder.setOnCheckedChangeListener { radioGroup, i ->
                 val radioButton = radioGroup.children.find { it.id == radioGroup.checkedRadioButtonId } as? RadioButton
                 val index = radioButton?.text.toString().toIntOrNull() ?: return@setOnCheckedChangeListener
@@ -260,12 +281,12 @@ class DemoActivity : AppCompatActivity() {
                 storylyView.setStoryGroupIconBorderColorSeen(arr)
                 borderSeenFlag = true
             }
-        } else {
-            storylyView.setStoryGroupIconBorderColorSeen(arr)
         }
     }
     private fun selectedBorderColorNotSeenSelect(arr: Array<Int>,isInit: Boolean?) {
-        if (isInit == null) {
+        isInit?.also {
+            storylyView.setStoryGroupIconBorderColorNotSeen(arr)
+        }?: run {
             binding.borderRadioGroupHolderNotSeen.setOnCheckedChangeListener { radioGroup, j ->
                 val radioButton = radioGroup.children.find { it.id == radioGroup.checkedRadioButtonId } as? RadioButton
                 val index = radioButton?.text.toString().toIntOrNull() ?: return@setOnCheckedChangeListener
@@ -305,8 +326,6 @@ class DemoActivity : AppCompatActivity() {
                 storylyView.setStoryGroupIconBorderColorNotSeen(arr)
                 borderNotSeenFlag = true
             }
-        } else {
-            storylyView.setStoryGroupIconBorderColorNotSeen(arr)
         }
     }
 
@@ -333,7 +352,9 @@ class DemoActivity : AppCompatActivity() {
     }
 
     private fun pincolor(color: Int?) {
-        if (color == null) {
+        color?.also {
+            storylyView.setStoryGroupPinIconColor(pinColor!!)
+        }?: run {
             binding.pinColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     //Do nothing
@@ -357,17 +378,17 @@ class DemoActivity : AppCompatActivity() {
                             val result = spinnerColors.get(postion)
                             pinColor = result
                             storylyView.setStoryGroupPinIconColor(result)
-                            }
                         }
                     }
                 }
-            } else {
-                storylyView.setStoryGroupPinIconColor(pinColor!!)
             }
         }
+    }
 
     private fun iconColor(colorIcon: Int?) {
-        if (colorIcon == null) {
+        colorIcon?.also {
+            storylyView.setStoryGroupIconBackgroundColor(colorIcon)
+        }?: run {
             binding.iconColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     //Do nothing
@@ -393,14 +414,13 @@ class DemoActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else {
-            storylyView.setStoryGroupIconBackgroundColor(colorIcon)
         }
     }
 
     private fun ivodColor(color: Int?) {
-        if (color == null) {
-            // Tools modifications - Ivod Icon Color
+        color?.also {
+            storylyView.setStoryGroupIVodIconColor(color)
+        }?: run {
             binding.ivodColorPickerSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(p0: AdapterView<*>?) {
                     //Do nothing
@@ -428,8 +448,6 @@ class DemoActivity : AppCompatActivity() {
                     }
                 }
             }
-        } else {
-            storylyView.setStoryGroupIVodIconColor(color)
         }
     }
 
@@ -465,18 +483,20 @@ class DemoActivity : AppCompatActivity() {
         storylyView.setStoryGroupIconStyling(StoryGroupIconStyling(height,width,cornerRadius))
         setupCustomization()
     }
-
     private fun groupListStyle(flag: Boolean?) {
-        if (flag == null) {
+        flag?.also {
+            storylyView.setStoryGroupListStyling(StoryGroupListStyling(binding.edgePedding.text.toString().toFloat(),binding.itemPedding.text.toString().toFloat()))
+        }?: run {
             binding.peddingApply.setOnClickListener{
                 if (binding.edgePedding.text.toString().toFloat() != Float.MIN_VALUE && binding.itemPedding.text.toString().toFloat() != Float.MIN_VALUE   ) {
                     initStory(groupSize)
                     peddingFlag = true
                     storylyView.setStoryGroupListStyling(StoryGroupListStyling(binding.edgePedding.text.toString().toFloat(),binding.itemPedding.text.toString().toFloat()))
+                    edgePeddigns = arrayOf(0f,0f)
+                    edgePeddigns.set(0,binding.edgePedding.text.toString().toFloat())
+                    edgePeddigns.set(1,binding.itemPedding.text.toString().toFloat())
                 }
             }
-        } else {
-            storylyView.setStoryGroupListStyling(StoryGroupListStyling(binding.edgePedding.text.toString().toFloat(),binding.itemPedding.text.toString().toFloat()))
         }
     }
     private fun groupTextStyle(visible: Boolean? = null, color: Int? = null, font: Typeface? = null, size:Pair<Int, Int?>? = null) {
