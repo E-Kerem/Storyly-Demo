@@ -41,6 +41,7 @@ class DemoActivity : AppCompatActivity() {
 
     lateinit var buttonSeen: RadioButton
     lateinit var buttonNotSeen: RadioButton
+
     lateinit var edgePeddigns: Array<Float>
     lateinit var iconBorderSeenColors: Array<Int>
     lateinit var iconBorderNotSeenColors: Array<Int>
@@ -469,16 +470,13 @@ class DemoActivity : AppCompatActivity() {
         if (flag == null) {
             binding.peddingApply.setOnClickListener{
                 if (binding.edgePedding.text.toString().toFloat() != Float.MIN_VALUE && binding.itemPedding.text.toString().toFloat() != Float.MIN_VALUE   ) {
-                    peddingFlag = true
                     initStory(groupSize)
+                    peddingFlag = true
                     storylyView.setStoryGroupListStyling(StoryGroupListStyling(binding.edgePedding.text.toString().toFloat(),binding.itemPedding.text.toString().toFloat()))
-                    edgePeddigns = Array(2) {0f}
-                    edgePeddigns[0] = binding.edgePedding.text.toString().toFloat()
-                    edgePeddigns[1] = binding.itemPedding.text.toString().toFloat()
                 }
             }
         } else {
-            storylyView.setStoryGroupListStyling(StoryGroupListStyling(edgePeddigns[0],edgePeddigns[1]))
+            storylyView.setStoryGroupListStyling(StoryGroupListStyling(binding.edgePedding.text.toString().toFloat(),binding.itemPedding.text.toString().toFloat()))
         }
     }
     private fun groupTextStyle(visible: Boolean? = null, color: Int? = null, font: Typeface? = null, size:Pair<Int, Int?>? = null) {
@@ -519,5 +517,4 @@ private fun getColorName( color: Int ): Int {
     }
     return found
 }
-
  */
